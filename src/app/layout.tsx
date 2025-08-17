@@ -1,5 +1,4 @@
 import Footer from "@/app/_components/footer";
-import { CMS_NAME, HOME_OG_IMAGE_URL } from "@/lib/constants";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import cn from "classnames";
@@ -10,10 +9,17 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: `Next.js Blog Example with ${CMS_NAME}`,
-  description: `A statically generated blog example using Next.js and ${CMS_NAME}.`,
+  title: "Blog de Karim Hammouche — Ses plus beaux projets",
+  description:
+    "Articles et notes de Karim Hammouche : parcours, projets, DAO, tech & automatisations.",
   openGraph: {
-    images: [HOME_OG_IMAGE_URL],
+    title: "Blog de Karim Hammouche — Ses plus beaux projets",
+    description:
+      "Articles et notes de Karim Hammouche : parcours, projets, DAO, tech & automatisations.",
+    images: ["/og/karim-blog.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
   },
 };
 
@@ -23,8 +29,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
+        <title>Blog de Karim Hammouche — Ses plus beaux projets</title>
+        <meta
+          name="description"
+          content="Articles et notes de Karim Hammouche : parcours, projets, DAO, tech & automatisations."
+        />
+        <meta
+          property="og:title"
+          content="Blog de Karim Hammouche — Ses plus beaux projets"
+        />
+        <meta
+          property="og:description"
+          content="Articles et notes de Karim Hammouche : parcours, projets, DAO, tech & automatisations."
+        />
+        <meta property="og:image" content="/og/karim-blog.png" />
+        <meta name="twitter:card" content="summary_large_image" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"

@@ -1,5 +1,5 @@
 import Container from "@/app/_components/container";
-import { HeroPost } from "@/app/_components/hero-post";
+import FeaturedPost from "@/app/_components/featured-post";
 import { Intro } from "@/app/_components/intro";
 import { MoreStories } from "@/app/_components/more-stories";
 import { getAllPosts } from "@/lib/api";
@@ -7,23 +7,15 @@ import { getAllPosts } from "@/lib/api";
 export default function Index() {
   const allPosts = getAllPosts();
 
-  const heroPost = allPosts[0];
-
-  const morePosts = allPosts.slice(1);
+  const featured = allPosts.find((p) => p.slug === "dao-the-hand");
+  const others = allPosts.filter((p) => p.slug !== "dao-the-hand");
 
   return (
     <main>
       <Container>
         <Intro />
-        <HeroPost
-          title={heroPost.title}
-          coverImage={heroPost.coverImage}
-          date={heroPost.date}
-          author={heroPost.author}
-          slug={heroPost.slug}
-          excerpt={heroPost.excerpt}
-        />
-        {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+        {featured && <FeaturedPost post={featured} />}
+        {others.length > 0 && <MoreStories posts={others} />}
       </Container>
     </main>
   );
